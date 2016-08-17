@@ -9,8 +9,8 @@ class SearchBar extends Component {
 
 		this.state = { term: '' };
 		// Our instance of SearchBar (this) has a function called onInputChange.
-		// Bind that function to this, and then replace onInputChange with this 
-		// new bound instance of this function 
+		// Bind that function to this, and then replace onInputChange with this
+		// new bound instance of this function
 		this.onInputChange = this.onInputChange.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
@@ -20,7 +20,7 @@ class SearchBar extends Component {
 	}
 
 	onFormSubmit(event) {
-		event.preventDefault();		
+		event.preventDefault();
 
 		// We need to go and fetch weather data
 		this.props.fetchWeather(this.state.term);
@@ -29,10 +29,10 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<form 
+			<form
 				onSubmit={this.onFormSubmit}
 				className="input-group">
-				<input 
+				<input
 					placeholder="Get a five day forecast in your favorite U.S. city"
 					className="form-control"
 					value={this.state.term}
@@ -46,13 +46,17 @@ class SearchBar extends Component {
 	}
 }
 
+// Anything returned from this function will end up as props
+// on the SearchBar container
 function mapDispatchToProps(dispatch) {
+	// Whenever fetchWeather is called, the result should be passed
+	// to all of our reducers
+
 	return bindActionCreators({ fetchWeather }, dispatch);
+	// Now we can call this.props.fetchWeather in this container
 }
 
-// passing in null because this function is supposed to map our dispatch 
+// Passing in null because this function is supposed to map our dispatch
 // to the props of our container, it is supposed to go second.
 // We are saying that we don't need state here
 export default connect(null, mapDispatchToProps)(SearchBar);
-
-

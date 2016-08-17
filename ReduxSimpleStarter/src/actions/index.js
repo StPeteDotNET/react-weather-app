@@ -9,13 +9,12 @@ export function fetchWeather(city) {
 	const url = `${ROOT_URL}&q=${city},us`;
 	const request = axios.get(url);
 
-	// Action Creators always have to return an action. And an action 
-	// and an action is an Object which ALWAYS has to have a type!
+	// Action Creators always have to return an action. And an action
+	// is an Object which ALWAYS has to have a type!
 	console.log('Request', request);
-	
+
 	return {
 		type: FETCH_WEATHER,
 		payload: request
 	};
 }
-
