@@ -3,27 +3,37 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 
+// The SearchBar needs to have the ability to talk to Redux to modify state,
+// so we promote it to a container
+
+// Also, since we are using 'connect' at the bottom of this file, we no longer
+// export this component
 class SearchBar extends Component {
 	constructor(props) {
 		super(props);
-
+		// This is local state independent of Redux store
 		this.state = { term: '' };
 		// Our instance of SearchBar (this) has a function called onInputChange.
 		// Bind that function to this, and then replace onInputChange with this
-		// new bound instance of this function
+		// new bound instance of this function (overriding local method, context)
 		this.onInputChange = this.onInputChange.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
 	onInputChange(event) {
+		// Declaratively set the state of the input field
+		// (we tell the field what the state is, not the other way around)
 		this.setState({ term: event.target.value });
 	}
 
 	onFormSubmit(event) {
+		// For form elements, use preventDefault() to override
+		// default browser actions (in this case, would attempt a POST to server)
 		event.preventDefault();
 
-		// We need to go and fetch weather data
+		// We need to go and fetch weather data, call Action Creator
 		this.props.fetchWeather(this.state.term);
+		// Mutate local state independent of Redux store
 		this.setState({ term: '' });
 	}
 
