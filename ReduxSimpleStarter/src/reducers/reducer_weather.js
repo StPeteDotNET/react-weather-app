@@ -1,3 +1,5 @@
+import { FETCH_WEATHER } from '../actions/index';
+
 // State argument is not application state, only the state
 // this specific reducer is responsible for.
 
@@ -5,8 +7,13 @@
 // we set a default. Undefined won't ever work, so at the very least, use null
 
 // Never mutate the state, return a fresh object
-export default function(state = null, action) {
-    console.log('Action received', action);
-
+export default function(state = [], action) {
+    // 'action' arg will contain returned Promise from 'fetchWeather action creator
+    // Start swtch statement to determine how to update state
+    switch (action.type) {
+      case FETCH_WEATHER:
+        // This is where we can (and probably should) opt for Object.assign
+        return [action.payload.data, ...state]; // new array[ city, city, city ]
+    }
     return state;
 }

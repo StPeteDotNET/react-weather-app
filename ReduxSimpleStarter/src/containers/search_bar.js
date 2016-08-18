@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Need connect to 'connect' React to Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
@@ -61,12 +62,11 @@ class SearchBar extends Component {
 function mapDispatchToProps(dispatch) {
 	// Whenever fetchWeather is called, the result should be passed
 	// to all of our reducers
-
 	return bindActionCreators({ fetchWeather }, dispatch);
 	// Now we can call this.props.fetchWeather in this container
 }
 
-// Passing in null because this function is supposed to map our dispatch
-// to the props of our container, it is supposed to go second.
-// We are saying that we don't need state here
+// Passing in null as first argument because this function is supposed to
+// map our dispatch to the props of our container, it is supposed 
+// to go second. We are saying that we don't need state here
 export default connect(null, mapDispatchToProps)(SearchBar);
