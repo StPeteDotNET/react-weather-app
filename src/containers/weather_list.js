@@ -9,7 +9,7 @@ class WeatherList extends Component {
     const temps = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp * (9/5) - 459.67);
     const pressure = cityData.list.map(weather => weather.main.pressure);
     const humidity = cityData.list.map(weather => weather.main.humidity);
-    // This is destructuring. Pulling these two properties off of the 'coord' property
+    // This (below) is destructuring. Pulling these two properties off of the 'coord' property
     // The two properties in the brackets have to be identical to the properties in
     // cityData.city.coord
     // Same as const lon = cityData.city.coord.lon (same for lat)
