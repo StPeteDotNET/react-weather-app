@@ -17,3 +17,9 @@ export default function(state = [], action) {
     }
     return state;
 }
+
+
+// Always strive to avoid mutating our state in here
+// Instead we return a new object that will take the place of the existing state
+
+// The use case here is called 'destructuring' an array.

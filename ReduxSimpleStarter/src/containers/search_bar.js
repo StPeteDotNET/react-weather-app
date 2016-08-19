@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 // Need connect to 'connect' React to Redux
 import { connect } from 'react-redux';
+// Turns an object whose values are action creators into an object with the same keys,
+// but with every action creator wrapped into a dispatch call so they may be invoked directly
 import { bindActionCreators } from 'redux';
+// Pull in the action creator that we intend to use
 import { fetchWeather } from '../actions/index';
 
 // The SearchBar needs to have the ability to talk to Redux to modify state,
@@ -67,6 +70,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Passing in null as first argument because this function is supposed to
-// map our dispatch to the props of our container, it is supposed 
+// map our dispatch to the props of our container, it is supposed
 // to go second. We are saying that we don't need state here
 export default connect(null, mapDispatchToProps)(SearchBar);
