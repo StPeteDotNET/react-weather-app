@@ -72,4 +72,4 @@ function mapDispatchToProps(dispatch) {
 // Passing in null as first argument because this function is supposed to
 // map our dispatch to the props of our container, it is supposed
 // to go second. We are saying that we don't need state here
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(null, {fetchWeather})(SearchBar);

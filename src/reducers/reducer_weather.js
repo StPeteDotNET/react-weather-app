@@ -12,8 +12,7 @@ export default function(state = [], action) {
     // Start swtch statement to determine how to update state
     switch (action.type) {
       case FETCH_WEATHER:
-        // This is where we can (and probably should) opt for Object.assign
-        return [action.payload.data, ...state]; // new array[ city, city, city ]
+        return handleWeatherData(state, action)
     }
     return state;
 }
@@ -23,3 +22,7 @@ export default function(state = [], action) {
 // Instead we return a new object that will take the place of the existing state
 
 // The use case here is called 'destructuring' an array.
+function handleWeatherData(state, action) {
+  // This is where we can (and probably should) opt for Object.assign
+  return [action.payload.data, ...state]; // new array[ city, city, city ]
+}
