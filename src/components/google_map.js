@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleMapLoader, GoogleMap } from 'react-google-maps';
 
+// adding a comment without curse words
 export default (props) => {
   return (
     <GoogleMapLoader
